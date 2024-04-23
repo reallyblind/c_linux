@@ -1,0 +1,62 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+#include "sqstack.h"
+
+sqstack *st_create(unsigned size)
+{
+	sqstack *st = malloc(sizeof(*st));
+	if(st == NULL) return NULL;
+	st->top = -1;
+	st->size = size;
+	return st;
+}
+
+int st_isEmpty(sqstack* st)
+{
+	if(st->top == -1) return 1;
+	return 0;
+}
+
+int st_push(sqstack *st,void *data)
+{
+	if(st->top == (MAXSIZE -1) ) return -1;
+	st->data[++(st->top)] = malloc(st->size); 
+	memcpy(st->data[st->top],data,st->size);
+	return 0;
+}
+
+int st_pop(sqstack*st,void *data)
+{
+	if(st->top == (MAXSIZE-1) ) return -1;
+	memcpy(data,st->data[st->top],st->size);
+	free(st->data[st->top]);
+	st->top--;
+	return 0;
+}
+
+int st_top(sqstack *st ,void *data)
+{
+	if(st->top == (MAXSIZE-1) ) return -1;
+	memcpy(data,st->data[st->top],st->size);
+	return 0;
+}
+
+void st_travel(sqstack *st,print* op)
+{
+	if(st_isEmpty(st)) return;
+	int i ;
+	for( i = 0; i <= st->top; i++)
+		op(st->data[i]);
+	printf("\n");
+
+}
+
+void st_destroy(sqstack *st)
+{
+	for(int i = 0 ; i <= st->top ;i++)
+		free(st->data[i]);
+	free(st);
+}
+

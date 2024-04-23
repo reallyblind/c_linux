@@ -1,0 +1,12 @@
+双向环链：
+
+数据结构:直接申请size个大小的空间，通过data获取该空间
+struct llist{
+	struct llist * next;
+	struct llist * prev;
+	char data[0];
+}
+
+把真正的结构类型放到.c中隐藏起来，不让用户看到更改
+
+

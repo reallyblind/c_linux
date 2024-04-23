@@ -1,0 +1,13 @@
+双向环链：
+
+数据结构
+struct llist{
+	struct llist * next;
+	struct llist * prev;
+	char data[1];
+}
+
+函数放到LLIST里，能实现面向对象的效果
+handler->insert();
+
+

@@ -1,0 +1,12 @@
+双向环链：
+
+数据结构
+struct llist{
+	void *data;
+	struct llist * next;
+	struct llist * prev;
+}
+
+
+
+
